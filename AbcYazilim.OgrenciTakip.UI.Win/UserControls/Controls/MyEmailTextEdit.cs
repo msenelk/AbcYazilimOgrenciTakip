@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.UserControls.Controls
 {
-    internal class MyEmailTextEdit : MyTextEdit
+    public class MyEmailTextEdit : MyTextEdit
     {
         [ToolboxItem(true)]
         public MyEmailTextEdit()
