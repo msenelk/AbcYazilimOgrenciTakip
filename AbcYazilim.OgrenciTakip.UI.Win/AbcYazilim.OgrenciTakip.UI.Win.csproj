@@ -141,6 +141,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\Controls\ToogleSwitch.cs" />
+    <Compile Include="UserControls\Grid\MyBandedGridControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UserControls\Grid\MyGridControl.cs">
       <SubType>Component</SubType>
     </Compile>
