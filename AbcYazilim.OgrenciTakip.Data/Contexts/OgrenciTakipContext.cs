@@ -1,8 +1,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Runtime.Remoting.Lifetime;
 using AbcYazilim.OgrenciTakip.Data.OgrenciTakipMigration;
-
+using AbcYazilim.OgrenciTakip.Model.Entities;
 
 namespace AbcYazilim.OgrenciTakip.Data.Contexts
 {
@@ -25,10 +24,10 @@ namespace AbcYazilim.OgrenciTakip.Data.Contexts
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
-
-        //public DbSet<Il> MyProperty2 { get; set; }
-        //public DbSet<Ilce> MyProperty1 { get; set; }
-        //public DbSet<Okul> MyProperty { get; set; }
+        // referans olarak eklemeyi unuttuðum için görünmüyordu :)
+        public DbSet<Il> MyProperty2 { get; set; }
+        public DbSet<Ilce> MyProperty1 { get; set; }
+        public DbSet<Okul> MyProperty { get; set; }
     }
 
 }
