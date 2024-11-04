@@ -8,14 +8,15 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Windows.Forms;
 using AbcYazilim.OgrenciTakip.Common.Enums;
+using System.Linq;
 
 namespace AbcYazilim.OgrenciTakip.Bll.General
 {
     public class OkulBll : BaseBll<Okul, OgrenciTakipContext>
     {
-        protected OkulBll() { }
+        public OkulBll() { }
 
-        protected OkulBll(Control ctrl) : base(ctrl){ }
+        public OkulBll(Control ctrl) : base(ctrl){ }
 
         public BaseEntity Single(Expression<Func<Okul,bool>> filter)
         {
@@ -43,7 +44,7 @@ namespace AbcYazilim.OgrenciTakip.Bll.General
                 IlAdi = x.Il.IlAdi,
                 IlceAdi = x.Ilce.IlceAdi,
                 Aciklama= x.Aciklama,
-            });
+            }).OrderBy(x=>x.Kod).ToList();
         }
 
         public bool Insert(BaseEntity entity)

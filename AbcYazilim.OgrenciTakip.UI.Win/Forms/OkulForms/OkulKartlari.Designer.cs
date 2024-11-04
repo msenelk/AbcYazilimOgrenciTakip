@@ -32,14 +32,29 @@
             this.grid = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridView();
             this.colId = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
             this.colKod = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
-            this.longNavigator1 = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Navigators.LongNavigator();
             this.colOkulAdi = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
             this.colIlAdi = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
             this.colIlceAdi = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
             this.colAciklama = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid.MyGridColumn();
+            this.longNavigator1 = new AbcYazilim.OgrenciTakip.UI.Win.UserControls.Navigators.LongNavigator();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ribbonControl
+            // 
+            this.ribbonControl.ExpandCollapseItem.Id = 0;
+            // 
+            // 
+            // 
+            this.ribbonControl.SearchEditItem.AccessibleName = "Search Item";
+            this.ribbonControl.SearchEditItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
+            this.ribbonControl.SearchEditItem.EditWidth = 150;
+            this.ribbonControl.SearchEditItem.Id = -5000;
+            this.ribbonControl.SearchEditItem.ImageOptions.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbonControl.Size = new System.Drawing.Size(1019, 109);
+            this.ribbonControl.Toolbar.ShowCustomizeItem = false;
             // 
             // tablo
             // 
@@ -85,6 +100,7 @@
             this.grid.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.Button;
             this.grid.OptionsView.RowAutoHeight = true;
             this.grid.OptionsView.ShowAutoFilterRow = true;
+            this.grid.OptionsView.ShowFooter = true;
             this.grid.OptionsView.ShowGroupPanel = false;
             this.grid.OptionsView.ShowViewCaption = true;
             this.grid.StatusBarAciklama = null;
@@ -117,14 +133,6 @@
             this.colKod.Visible = true;
             this.colKod.VisibleIndex = 0;
             this.colKod.Width = 130;
-            // 
-            // longNavigator1
-            // 
-            this.longNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.longNavigator1.Location = new System.Drawing.Point(0, 611);
-            this.longNavigator1.Name = "longNavigator1";
-            this.longNavigator1.Size = new System.Drawing.Size(1019, 24);
-            this.longNavigator1.TabIndex = 3;
             // 
             // colOkulAdi
             // 
@@ -178,6 +186,14 @@
             this.colAciklama.VisibleIndex = 4;
             this.colAciklama.Width = 450;
             // 
+            // longNavigator1
+            // 
+            this.longNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.longNavigator1.Location = new System.Drawing.Point(0, 611);
+            this.longNavigator1.Name = "longNavigator1";
+            this.longNavigator1.Size = new System.Drawing.Size(1019, 24);
+            this.longNavigator1.TabIndex = 3;
+            // 
             // OkulKartlari
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,8 +204,10 @@
             this.IconOptions.ShowIcon = false;
             this.Name = "OkulKartlari";
             this.Text = "Okul Kartları";
+            this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.longNavigator1, 0);
             this.Controls.SetChildIndex(this.tablo, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
@@ -198,9 +216,6 @@
         }
 
         #endregion
-
-        private UserControls.Grid.MyGridControl tablo;
-        private UserControls.Grid.MyGridView grid;
         private UserControls.Grid.MyGridColumn colId;
         private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator1;
@@ -208,5 +223,7 @@
         private UserControls.Grid.MyGridColumn colIlAdi;
         private UserControls.Grid.MyGridColumn colIlceAdi;
         private UserControls.Grid.MyGridColumn colAciklama;
+        public UserControls.Grid.MyGridControl tablo;
+        private UserControls.Grid.MyGridView grid;
     }
 }
