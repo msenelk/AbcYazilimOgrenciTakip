@@ -25,9 +25,9 @@ namespace AbcYazilim.OgrenciTakip.Data.Contexts
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
         // referans olarak eklemeyi unuttuðum için görünmüyordu :)
-        public DbSet<Il> MyProperty2 { get; set; }
-        public DbSet<Ilce> MyProperty1 { get; set; }
-        public DbSet<Okul> MyProperty { get; set; }
+        public DbSet<Il> Il { get; set; }
+        public DbSet<Ilce> Ilce { get; set; }
+        public DbSet<Okul> Okul { get; set; }
     }
 
 }

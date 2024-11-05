@@ -20,8 +20,6 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.GenelForms
                     case BarButtonItem btn:
                         btn.ItemClick += Butonlar_ItemClick;
                         break;
-                    default:
-                        break;
                 }
             }
         }

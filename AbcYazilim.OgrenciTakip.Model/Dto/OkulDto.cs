@@ -1,9 +1,10 @@
 ﻿using AbcYazilim.OgrenciTakip.Model.Entities;
 using AbcYazilim.OgrenciTakip.Model.Entities.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AbcYazilim.OgrenciTakip.Model.Dto
 {
-    //Attribute
+    [NotMapped] // OkulS class ı veritabanına dahil etmiyor anlamına geliyor.
     public class OkulS:Okul
     {
         public string IlAdi { get; set; }
