@@ -74,30 +74,32 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BaseForms\BaseKartForm.cs">
+    <Compile Include="Forms\BaseForms\BaseEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BaseForms\BaseKartForm.Designer.cs">
-      <DependentUpon>BaseKartForm.cs</DependentUpon>
+    <Compile Include="Forms\BaseForms\BaseEditForm.Designer.cs">
+      <DependentUpon>BaseEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BaseForms\BaseKartlarForm.cs">
+    <Compile Include="Forms\BaseForms\BaseListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BaseForms\BaseKartlarForm.Designer.cs">
-      <DependentUpon>BaseKartlarForm.cs</DependentUpon>
+    <Compile Include="Forms\BaseForms\BaseListForm.Designer.cs">
+      <DependentUpon>BaseListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OkulForms\OkulKarti.cs">
+    <Compile Include="Forms\OkulForms\OkulEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OkulForms\OkulKarti.Designer.cs">
-      <DependentUpon>OkulKarti.cs</DependentUpon>
+    <Compile Include="Forms\OkulForms\OkulEditForm.Designer.cs">
+      <DependentUpon>OkulEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\OkulForms\OkulKartlari.cs">
+    <Compile Include="Forms\OkulForms\OkulListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\OkulForms\OkulKartlari.Designer.cs">
-      <DependentUpon>OkulKartlari.cs</DependentUpon>
+    <Compile Include="Forms\OkulForms\OkulListForm.Designer.cs">
+      <DependentUpon>OkulListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functions\FilterFunctions.cs" />
+    <Compile Include="Functions\GeneralFunctions.cs" />
     <Compile Include="GenelForms\AnaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +110,9 @@
     <Compile Include="Interfaces\IStatusBarKisaYol.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Show\Interfaces\IBaseFormShow.cs" />
+    <Compile Include="Show\ShowEditForms.cs" />
+    <Compile Include="Show\ShowListForms.cs" />
     <Compile Include="UserControls\Controls\MyButtonEdit.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -196,17 +201,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BaseForms\BaseKartForm.resx">
-      <DependentUpon>BaseKartForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BaseForms\BaseEditForm.resx">
+      <DependentUpon>BaseEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BaseForms\BaseKartlarForm.resx">
-      <DependentUpon>BaseKartlarForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BaseForms\BaseListForm.resx">
+      <DependentUpon>BaseListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OkulForms\OkulKarti.resx">
-      <DependentUpon>OkulKarti.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OkulForms\OkulEditForm.resx">
+      <DependentUpon>OkulEditForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OkulForms\OkulKartlari.resx">
-      <DependentUpon>OkulKartlari.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OkulForms\OkulListForm.resx">
+      <DependentUpon>OkulListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenelForms\AnaForm.resx">
       <DependentUpon>AnaForm.cs</DependentUpon>
@@ -337,10 +342,26 @@
       <Project>{E1F7ECC0-B677-42D4-BE22-D35746DF27AE}</Project>
       <Name>AbcYazilim.OgrenciTakip.Bll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AbcYazilim.OgrenciTakip.Common\AbcYazilim.OgrenciTakip.Common.csproj">
+      <Project>{802B2640-2B42-4D65-9370-5056D3A08163}</Project>
+      <Name>AbcYazilim.OgrenciTakip.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AbcYazilim.OgrenciTakip.Model\AbcYazilim.OgrenciTakip.Model.csproj">
       <Project>{C7EB953F-00E0-4E9A-BF3B-103C4979A0F7}</Project>
       <Name>AbcYazilim.OgrenciTakip.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttoxlsx_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttodoc_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttopdf_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttotxt_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

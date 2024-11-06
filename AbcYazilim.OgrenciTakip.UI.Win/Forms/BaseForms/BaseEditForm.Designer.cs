@@ -1,6 +1,6 @@
 ﻿namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
-    partial class BaseKartForm
+    partial class BaseEditForm
     {
         /// <summary>
         /// Required designer variable.
