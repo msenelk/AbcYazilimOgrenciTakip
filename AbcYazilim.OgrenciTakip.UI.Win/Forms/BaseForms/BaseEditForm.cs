@@ -41,6 +41,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             GuncelNesneOlustur();
             // SablonYukle();
             // ButonGizleGoster();
+            Id=IslemTuru.IdOlustur(OldEntity);
+
+            // Güncelleme Yapılacak
             
         }
 

@@ -1,7 +1,9 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Common.Message;
+using AbcYazilim.OgrenciTakip.Model.Entities.Base;
 using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Grid;
+using System;
 using System.Collections.Generic;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
@@ -60,6 +62,47 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
             btnGeriAl.Enabled = butonEnabledDurumu;
             btnYeni.Enabled = !butonEnabledDurumu;
             btnSil.Enabled = !butonEnabledDurumu;
+        }
+
+        public static long IdOlustur(this IslemTuru islemTuru, BaseEntity selectedEntity)
+        {
+            // aynı anda farklı ıd ler oluşturmak için..
+            // yıl ay gün saat dakika saniye salise ve random
+            string SifirEkle(string deger)
+            {
+                if(deger.Length ==1)
+                    return "0" + deger;
+                return deger;
+            }
+
+            string UcBasamakYap(string deger)
+            {
+                switch (deger.Length)
+                {
+                    case 1:
+                        return "00" + deger;
+                    case 2:
+                        return "0" + deger; 
+                }
+                return deger;
+            }
+
+            string Id()
+            {
+                var yil = SifirEkle(DateTime.Now.Date.Year.ToString());
+                var ay = SifirEkle(DateTime.Now.Date.Month.ToString());
+                var gun = SifirEkle(DateTime.Now.Date.Day.ToString());
+                var saat = SifirEkle(DateTime.Now.Date.Hour.ToString());
+                var dakika = SifirEkle(DateTime.Now.Date.Minute.ToString());
+                var saniye = SifirEkle(DateTime.Now.Date.Second.ToString());
+                var milisaniye = UcBasamakYap(DateTime.Now.Date.Millisecond.ToString());
+                var random = SifirEkle(new Random().Next(0,99).ToString());
+
+                return yil + ay + gun + saat + dakika + saniye + milisaniye + random;
+            }
+
+            return islemTuru == IslemTuru.EntitUpdate ? selectedEntity.Id:long.Parse(Id());
+
         }
     }
 }
