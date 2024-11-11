@@ -1,5 +1,8 @@
 ﻿using AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms;
+using AbcYazilim.OgrenciTakip.UI.Win.Show;
 using DevExpress.XtraBars;
+using AbcYazilim.OgrenciTakip.Common.Enums;
+using DevExpress.XtraEditors.ColorPick.Picker;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.GenelForms
 {
@@ -26,12 +29,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.GenelForms
 
         private void Butonlar_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(e.Item == btnOkulKartlari)
-            {
-                OkulListForm frm = new OkulListForm();
-                frm.MdiParent = ActiveForm; // Akif olan formda açıl.
-                frm.Show();
-            }
+            if (e.Item == btnOkulKartlari)
+                ShowListForms<OkulListForm>.ShowListForm(KartTuru.Okul);
         }
     }
 }

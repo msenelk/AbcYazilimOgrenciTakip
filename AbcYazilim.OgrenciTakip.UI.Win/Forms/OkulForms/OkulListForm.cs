@@ -12,7 +12,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
         public OkulListForm()
         {
             InitializeComponent();
-            Bll = new OkulBll();
+            // Bll = new OkulBll();
+            OkulBll bll = new OkulBll();
+            grid.DataSource = bll.List(null);
         }
 
         protected override void DegiskenleriDoldur()
