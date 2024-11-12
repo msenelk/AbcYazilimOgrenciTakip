@@ -7,8 +7,8 @@ namespace AbcYazilim.OgrenciTakip.Common.Enums
         [Description("Okul Kartı")]
         Okul = 1, // indexi bir ile başlattık
         [Description("İl Kartı")]
-        Il,
+        Il =2,
         [Description("İlçe Kartı")]
-        Ilce
+        Ilce =3
     }
 }

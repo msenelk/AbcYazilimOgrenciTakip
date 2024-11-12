@@ -23,6 +23,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
         protected internal override void Yukle()
         {
             OldEntity = IslemTuru == IslemTuru.EntityInsert ? new OkulS() : ((OkulBll)Bll).Single(FilterFunctions.Filter<Okul>(Id));
+            NesneyiKontrollerBagla();
+
+            if (IslemTuru != IslemTuru.EntityInsert) return;
+            txtKod.Text = ((OkulBll)Bll).YeniKodVer();
+            // txtOkulAdi.Focus();
         }
 
         protected override void NesneyiKontrollerBagla()

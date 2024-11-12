@@ -66,6 +66,12 @@ namespace AbcYazilim.OgrenciTakip.Bll.Base
             return _uow.Save();
         }
 
+        protected string BaseYeniKodVer(KartTuru kartTuru, Expression<Func<T,string>> filter, Expression<Func<T,bool>> where = null)
+        {
+            GeneralFunctions.CreateUnitOfWork<T, TContext>(ref _uow);
+            return _uow.Rep.YeniKodVer(kartTuru, filter, where);
+        }
+
         #region Disposable 
         public void Dispose()
         {

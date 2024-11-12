@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -20,5 +21,6 @@ namespace AbcYazilim.Dal.Interfaces
         // Geriye döndürülecek tipi bilmediğimiz için TResult yaptık
         IQueryable<TResult> Select<TResult>(Expression<Func<T, bool>> filter, Expression<Func<T, TResult>> selector);
         // T türünü içeren filtre göndereceğiz bu filtre ile sorgulama yap sorgu sonucu true ise bunları bana geriye gönder. Sorgu gönderir değer değil. Listeleme ayrı olacak
+        string YeniKodVer(KartTuru kartTuru, Expression<Func<T, string>> filter, Expression<Func<T, bool>> where = null);
     }
 }

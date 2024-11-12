@@ -13,8 +13,6 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
         {
             InitializeComponent();
             // Bll = new OkulBll();
-            OkulBll bll = new OkulBll();
-            grid.DataSource = bll.List(null);
         }
 
         protected override void DegiskenleriDoldur()
@@ -27,7 +25,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
 
         protected override void Listele()
         {
-            Tablo.GridControl.DataSource=((OkulBll)Bll).List(FilterFunctions.Filter<Okul>(AktifKartlariGoster));
+            //Tablo.GridControl.DataSource = ((OkulBll)Bll).List(FilterFunctions.Filter<Okul>(AktifKartlariGoster));
         }
 
     }

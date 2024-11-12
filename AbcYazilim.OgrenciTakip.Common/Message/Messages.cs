@@ -23,10 +23,25 @@ namespace AbcYazilim.OgrenciTakip.Common.Message
         {
             return XtraMessageBox.Show(mesaj, baslik, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
+
+        public static DialogResult EvetSeciliEvetHayirIptal(string mesaj, string baslik)
+        {
+            return XtraMessageBox.Show(mesaj, baslik, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+        }
         public static DialogResult SilMesaj(string kartAdi)
         {
             return HayirSeciliEvetHayir($"Seçtiğiniz {kartAdi} Silinecektir. Onaylıyor musunuz?", "Silme Onayı");
         }
+        public static DialogResult KapanisMesaj()
+        {
+            return EvetSeciliEvetHayirIptal("Yapılan Değişiklikler Kayıt Edilsin mi?", "Çıkış Onay");
+        }
+
+        public static DialogResult KayitMesaj()
+        {
+            return EvetSeciliEvetHayir("Yapılan Değişiklikler Kayıl Edilsin mi?", "Kayıt Onay");
+        }
+
         public static void KartSecmemeUyariMesaji()
         {
             UyariMesaji("Lütfen Bir Kart Seçiniz.");
