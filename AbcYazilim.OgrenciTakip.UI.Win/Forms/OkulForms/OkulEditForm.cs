@@ -26,19 +26,19 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
             NesneyiKontrollerBagla();
 
             if (IslemTuru != IslemTuru.EntityInsert) return;
-            txtKod.Text = ((OkulBll)Bll).YeniKodVer();
-            // txtOkulAdi.Focus();
+            KodAdi.Text = ((OkulBll)Bll).YeniKodVer();
+            txtOkulAdi.Focus();
         }
 
         protected override void NesneyiKontrollerBagla()
         {
             var entity = (OkulS)OldEntity;
-            txtKod.Text=entity.Kod;
-            txtOkulAdi.Text=entity.OkulAdi;
-           //txtIl.Id = entity.IlId;
-            txtIl.Text = entity.IlAdi;
-            txtIlce.Text = entity.IlceAdi;
-            txtAciklama.Text = entity.Aciklama;
+            KodAdi.Text=entity.Kod;
+            txtOkulAdi2.Text=entity.OkulAdi;
+            txtIl.Id = entity.IlId;
+            IlAdi.Text = entity.IlAdi;
+            myTextEdit4.Text = entity.IlceAdi;
+            myTextEdit5.Text = entity.Aciklama;
             tglDurum.IsOn = entity.Durum;
         }
 
@@ -47,11 +47,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
             CurrentEntity = new Okul
             {
                 Id = Id,
-                Kod = txtKod.Text,
-                OkulAdi = txtOkulAdi.Text,
-                //IlId = Convert.ToInt64(txtIl.Id),
-               // IlceId = Convert.ToInt64(txtIlce.Id),
-                Aciklama=txtAciklama.Text,
+                Kod = KodAdi.Text,
+                OkulAdi = txtOkulAdi2.Text,
+                IlId = Convert.ToInt64(txtIl.Id),
+                IlceId = Convert.ToInt64(txtIlce.Id),
+                Aciklama=myTextEdit5.Text,
                 Durum=tglDurum.IsOn
             };
 
