@@ -35,7 +35,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
             var entity = (OkulS)OldEntity;
             txtKod.Text=entity.Kod;
             txtOkulAdi.Text=entity.OkulAdi;
-           // txtIl.Id = entity.IlId;
+           //txtIl.Id = entity.IlId;
             txtIl.Text = entity.IlAdi;
             txtIlce.Text = entity.IlceAdi;
             txtAciklama.Text = entity.Aciklama;
@@ -49,7 +49,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
                 Id = Id,
                 Kod = txtKod.Text,
                 OkulAdi = txtOkulAdi.Text,
-               // IlId = Convert.ToInt64(txtIl.Id),
+                //IlId = Convert.ToInt64(txtIl.Id),
                // IlceId = Convert.ToInt64(txtIlce.Id),
                 Aciklama=txtAciklama.Text,
                 Durum=tglDurum.IsOn
