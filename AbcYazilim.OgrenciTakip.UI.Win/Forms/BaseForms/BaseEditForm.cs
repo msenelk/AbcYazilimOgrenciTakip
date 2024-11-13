@@ -44,7 +44,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             GuncelNesneOlustur();
             // SablonYukle();
             // ButonGizleGoster();
-            Id=IslemTuru.IdOlustur(OldEntity);
+            Id=BaseIslemTuru.IdOlustur(OldEntity);
 
             // Güncelleme Yapılacak
             
@@ -55,7 +55,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             if(e.Item == btnYeni)
             {
                 // Yetki Kontrolü
-                IslemTuru = IslemTuru.EntityInsert;
+                BaseIslemTuru = IslemTuru.EntityInsert;
                 Yukle();
             }
             else if(e.Item == btnKaydet)
@@ -90,7 +90,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                switch (IslemTuru)
+                switch (BaseIslemTuru)
                 {
                     case IslemTuru.EntityInsert:
                         if (EntityInsert())
@@ -112,7 +112,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                     if (KayitSonrasiFormuKapat)
                         Close();
                     else
-                        IslemTuru = IslemTuru == IslemTuru.EntityInsert ? IslemTuru.EntitUpdate : IslemTuru;
+                        BaseIslemTuru = BaseIslemTuru == IslemTuru.EntityInsert ? IslemTuru.EntitUpdate : BaseIslemTuru;
                     
                     return true;
                 }

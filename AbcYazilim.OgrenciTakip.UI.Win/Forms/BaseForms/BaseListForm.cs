@@ -54,9 +54,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 
         protected virtual void DegiskenleriDoldur(){}
 
-        private void ShowEditForm(long id)
+        protected virtual void ShowEditForm(long id)
         {
-            var result = FormShow.ShowDialogEditForm(KartTuru, id);
+            var result = FormShow.ShowDialogEditForm(BaseKartTuru, id);
         }
 
         private void EntityDelete()

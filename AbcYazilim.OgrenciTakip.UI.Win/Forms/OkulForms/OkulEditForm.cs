@@ -26,7 +26,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
             NesneyiKontrollerBagla();
 
             if (BaseIslemTuru != IslemTuru.EntityInsert) return;
-            KodAdi.Text = ((OkulBll)Bll).YeniKodVer();
+            txtKod.Text = ((OkulBll)Bll).YeniKodVer();
             txtOkulAdi.Focus();
         }
 

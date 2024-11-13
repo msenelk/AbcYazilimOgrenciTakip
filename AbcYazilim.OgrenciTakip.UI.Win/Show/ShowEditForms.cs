@@ -13,12 +13,26 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Show
 
             using (var frm = (TForm)Activator.CreateInstance(typeof(TForm)))
             {
-                frm.IslemTuru = id > 0 ? IslemTuru.EntitUpdate : IslemTuru.EntityInsert;
+                frm.BaseIslemTuru = id > 0 ? IslemTuru.EntitUpdate : IslemTuru.EntityInsert;
                 // ıd 0 dan büyükse update,değilse ınsert
                 frm.Id = id;
                 frm.Yukle();
                 frm.ShowDialog();
                 return frm.RefreshYapilacak ? frm.Id:0; 
+            }
+        }
+
+        public long ShowDialogEditForm(KartTuru kartTuru, long id, params object[] prm )
+        {
+            // Yetki Kontrolü
+
+            using (var frm = (TForm)Activator.CreateInstance(typeof(TForm), prm))
+            {
+                frm.BaseIslemTuru = id > 0 ? IslemTuru.EntitUpdate : IslemTuru.EntityInsert;
+                frm.Id = id;
+                frm.Yukle();
+                frm.ShowDialog();
+                return frm.RefreshYapilacak ? frm.Id : 0;
             }
         }
     }
