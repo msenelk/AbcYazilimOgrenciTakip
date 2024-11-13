@@ -16,16 +16,16 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
 
             DataLayoutControl = myDataLayoutControl;
             Bll = new OkulBll(myDataLayoutControl);
-            KartTuru = KartTuru.Okul;
+            BaseKartTuru = KartTuru.Okul;
             EventsLoad();
         }
 
         protected internal override void Yukle()
         {
-            OldEntity = IslemTuru == IslemTuru.EntityInsert ? new OkulS() : ((OkulBll)Bll).Single(FilterFunctions.Filter<Okul>(Id));
+            OldEntity = BaseIslemTuru == IslemTuru.EntityInsert ? new OkulS() : ((OkulBll)Bll).Single(FilterFunctions.Filter<Okul>(Id));
             NesneyiKontrollerBagla();
 
-            if (IslemTuru != IslemTuru.EntityInsert) return;
+            if (BaseIslemTuru != IslemTuru.EntityInsert) return;
             KodAdi.Text = ((OkulBll)Bll).YeniKodVer();
             txtOkulAdi.Focus();
         }
@@ -33,13 +33,13 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
         protected override void NesneyiKontrollerBagla()
         {
             var entity = (OkulS)OldEntity;
-            KodAdi.Text=entity.Kod;
-            txtOkulAdi2.Text=entity.OkulAdi;
+            txtKod.Text=entity.Kod;
+            txtOkulAdi.Text=entity.OkulAdi;
             txtIl.Id = entity.IlId;
-            IlAdi.Text = entity.IlAdi;
-            myTextEdit4.Text = entity.IlceAdi;
-            myTextEdit5.Text = entity.Aciklama;
-            tglDurum.IsOn = entity.Durum;
+            txtIl.Text = entity.IlAdi;
+            txtIlce.Text = entity.IlceAdi;
+            txtAciklama.Text = entity.Aciklama;
+            durum.IsOn = entity.Durum;
         }
 
         protected override void GuncelNesneOlustur()
@@ -52,7 +52,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
                 IlId = Convert.ToInt64(txtIl.Id),
                 IlceId = Convert.ToInt64(txtIlce.Id),
                 Aciklama=myTextEdit5.Text,
-                Durum=tglDurum.IsOn
+                Durum=durum.IsOn
             };
 
             ButonEnabledDurumu();

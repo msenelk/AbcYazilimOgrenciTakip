@@ -14,7 +14,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
     public partial class BaseListForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         protected IBaseFormShow FormShow;
-        protected KartTuru KartTuru;
+        protected KartTuru BaseKartTuru;
         protected internal GridView Tablo;
         protected bool AktifKartlariGoster = true;
         protected internal bool MultiSelect;

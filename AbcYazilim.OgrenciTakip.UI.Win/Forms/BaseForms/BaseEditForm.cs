@@ -13,12 +13,12 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
     public partial class BaseEditForm : RibbonForm
     {
-        protected internal IslemTuru IslemTuru;
+        protected internal IslemTuru BaseIslemTuru;
         protected internal long Id;
         protected internal bool RefreshYapilacak;
         protected MyDataLayoutControl DataLayoutControl;
         protected IBaseBll Bll;
-        protected KartTuru KartTuru;
+        protected KartTuru BaseKartTuru;
         protected BaseEntity OldEntity;
         protected BaseEntity CurrentEntity;
         protected bool IsLoaded;
