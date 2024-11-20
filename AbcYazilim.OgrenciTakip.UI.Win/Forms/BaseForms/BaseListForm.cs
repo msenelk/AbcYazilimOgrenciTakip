@@ -21,6 +21,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         protected internal BaseEntity SelectedEntity;
         protected IBaseBll Bll;
         protected ControlNavigator Navigator;
+        protected internal long? SeciliGelecekId;
         public BaseListForm()
         {
             InitializeComponent();

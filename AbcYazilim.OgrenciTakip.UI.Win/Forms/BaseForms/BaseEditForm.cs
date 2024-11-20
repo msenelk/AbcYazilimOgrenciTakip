@@ -74,6 +74,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             }
         }
 
+        protected virtual void SecimYap(object sender) { }
+
         private void EntityDelete()
         {
             throw new NotImplementedException();

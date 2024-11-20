@@ -72,7 +72,6 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnOkulKartlari);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // ribbonStatusBar1
             // 

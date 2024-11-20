@@ -47,13 +47,13 @@
             this.kod = new DevExpress.XtraLayout.LayoutControlItem();
             this.myTextEdit3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.myTextEdit4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.s = new DevExpress.XtraLayout.LayoutControlItem();
+            this.tglDurum = new DevExpress.XtraLayout.LayoutControlItem();
             this.myTextEdit5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.myTextEdit2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.s = new DevExpress.XtraLayout.LayoutControlItem();
             this.KodAdi = new DevExpress.XtraLayout.LayoutControlItem();
             this.txtOkulAdi2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.IlAdi = new DevExpress.XtraLayout.LayoutControlItem();
-            this.tglDurum = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myDataLayoutControl)).BeginInit();
             this.myDataLayoutControl.SuspendLayout();
@@ -67,13 +67,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.kod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglDurum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KodAdi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOkulAdi2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IlAdi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tglDurum)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -293,17 +293,17 @@
             this.myTextEdit4.TextSize = new System.Drawing.Size(41, 13);
             this.myTextEdit4.TextToControlDistance = 10;
             // 
-            // s
+            // tglDurum
             // 
-            this.s.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.s.AppearanceItemCaption.Options.UseForeColor = true;
-            this.s.Control = this.durum;
-            this.s.Location = new System.Drawing.Point(279, 0);
-            this.s.Name = "s";
-            this.s.OptionsTableLayoutItem.ColumnIndex = 2;
-            this.s.Size = new System.Drawing.Size(99, 24);
-            this.s.TextSize = new System.Drawing.Size(0, 0);
-            this.s.TextVisible = false;
+            this.tglDurum.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
+            this.tglDurum.AppearanceItemCaption.Options.UseForeColor = true;
+            this.tglDurum.Control = this.durum;
+            this.tglDurum.Location = new System.Drawing.Point(279, 0);
+            this.tglDurum.Name = "s";
+            this.tglDurum.OptionsTableLayoutItem.ColumnIndex = 2;
+            this.tglDurum.Size = new System.Drawing.Size(99, 24);
+            this.tglDurum.TextSize = new System.Drawing.Size(0, 0);
+            this.tglDurum.TextVisible = false;
             // 
             // myTextEdit5
             // 
@@ -334,6 +334,18 @@
             this.myTextEdit2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.myTextEdit2.TextSize = new System.Drawing.Size(41, 13);
             this.myTextEdit2.TextToControlDistance = 10;
+            // 
+            // s
+            // 
+            this.s.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
+            this.s.AppearanceItemCaption.Options.UseForeColor = true;
+            this.s.Control = this.durum;
+            this.s.Location = new System.Drawing.Point(279, 0);
+            this.s.Name = "s";
+            this.s.OptionsTableLayoutItem.ColumnIndex = 2;
+            this.s.Size = new System.Drawing.Size(99, 24);
+            this.s.TextSize = new System.Drawing.Size(0, 0);
+            this.s.TextVisible = false;
             // 
             // KodAdi
             // 
@@ -377,18 +389,6 @@
             this.IlAdi.TextSize = new System.Drawing.Size(41, 13);
             this.IlAdi.TextToControlDistance = 10;
             // 
-            // tglDurum
-            // 
-            this.tglDurum.AppearanceItemCaption.ForeColor = System.Drawing.Color.Maroon;
-            this.tglDurum.AppearanceItemCaption.Options.UseForeColor = true;
-            this.tglDurum.Control = this.durum;
-            this.tglDurum.Location = new System.Drawing.Point(279, 0);
-            this.tglDurum.Name = "s";
-            this.tglDurum.OptionsTableLayoutItem.ColumnIndex = 2;
-            this.tglDurum.Size = new System.Drawing.Size(99, 24);
-            this.tglDurum.TextSize = new System.Drawing.Size(0, 0);
-            this.tglDurum.TextVisible = false;
-            // 
             // OkulEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,6 +398,7 @@
             this.IconOptions.ShowIcon = false;
             this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "OkulEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Okul Kartı";
             this.Controls.SetChildIndex(this.ribbonControl, 0);
             this.Controls.SetChildIndex(this.myDataLayoutControl, 0);
@@ -414,13 +415,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.kod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tglDurum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KodAdi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOkulAdi2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IlAdi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tglDurum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
