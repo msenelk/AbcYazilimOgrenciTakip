@@ -1,10 +1,12 @@
 ﻿using AbcYazilim.OgrenciTakip.Common.Enums;
 using AbcYazilim.OgrenciTakip.Common.Message;
 using AbcYazilim.OgrenciTakip.Model.Entities.Base;
+using AbcYazilim.OgrenciTakip.UI.Win.UserControls.Controls;
 using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
 {
@@ -103,6 +105,18 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
 
             return islemTuru == IslemTuru.EntitUpdate ? selectedEntity.Id:long.Parse(Id());
 
+        }
+
+        public static void ControlEnabledChange(this MyButtonEdit baseEdit, Control prmEdit)
+        {
+            switch (prmEdit)
+            {
+                case MyButtonEdit edt:
+                    edt.Enabled = baseEdit.Id.HasValue && baseEdit.Id > 0;
+                    edt.Id = null;
+                    edt.EditValue = null;
+                    break;
+            }
         }
     }
 }

@@ -46,6 +46,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                 {
                     case MyButtonEdit edt:
                         edt.IdChanged += Control_IdChanged;
+                        edt.EnabledChange += Control_EnabledChange;
                         edt.ButtonClick += Control_ButtonClick;
                         edt.DoubleClick += Control_DoubleClick;
                         break;
@@ -65,6 +66,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                     foreach (Control ctrl in layout.Controls)
                         ControlEvents(ctrl);
         }
+
+        protected virtual void Control_EnabledChange(object sender, EventArgs e)  {        }
 
         private void Control_EditValueChanged(object sender, EventArgs e)
         {
