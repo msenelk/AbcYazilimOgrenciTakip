@@ -38,11 +38,12 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.UserControls.Controls
                 if (newValue == oldValue) return;
                 _id = value;
                 IdChanged(this, new IdChangedEventArgs(oldValue, newValue));
+                EnabledChange(this, EventArgs.Empty);
             }
         }
 
-
         public event EventHandler<IdChangedEventArgs> IdChanged = delegate { }; // EventHandler bir olay (event) tanımlamak için kullanılır. Olaylar, bir nesne tarafından başka bir nesneye belirli bir eylemin gerçekleştiğini bildirmek için kullanılır. EventHandler ise, bir olay tetiklendiğinde hangi metodun çalışacağını tanımlayan bir delege'dir 
+        public event EventHandler EnabledChange=delegate { };
         #endregion.
 
     }
