@@ -4,6 +4,7 @@ using AbcYazilim.OgrenciTakip.Model.Dto;
 using AbcYazilim.OgrenciTakip.Model.Entities;
 using AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms;
 using AbcYazilim.OgrenciTakip.UI.Win.Functions;
+using DevExpress.XtraEditors;
 using System;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
@@ -60,7 +61,14 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
 
         protected override void SecimYap(object sender)
         {
-            
+            if (!(sender is ButtonEdit)) return;
+            using (var sec=new SelectFunctions())
+            {
+                if (sender == txtIl)
+                    sec.Sec(txtIl);
+                else if (sender == txtIlce)
+                    sec.Sec(txtIlce, txtIl);
+            }
         }
     }
 }
