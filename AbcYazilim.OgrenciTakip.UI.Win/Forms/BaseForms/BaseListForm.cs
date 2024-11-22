@@ -43,10 +43,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         private void BaseListForm_Shown(object sender, EventArgs e)
         {
             Tablo.Focus();
-            ButonGizleGoster();
-            SutunGizleGoster();
+            //ButonGizleGoster();
+            //SutunGizleGoster();
 
-            Tablo.RowFocus();
+            if (IsMdiChild || SeciliGelecekId == null) return;
+            Tablo.RowFocus("Id", SeciliGelecekId);
         }
 
         private void SutunGizleGoster()
