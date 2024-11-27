@@ -156,7 +156,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 
         private void GeriAl()
         {
-            throw new NotImplementedException();
+            if (Messages.HayirSeciliEvetHayir("Yapılan Değişiklikler Geri Alınacaktır. Onaylıyor musunuz?","Geri Al Onay")!=DialogResult.Yes)return;
+            if (BaseIslemTuru == IslemTuru.EntitUpdate)
+                Yukle();
+            else
+                Close();
         }
 
         private bool Kaydet(bool kapanis)
