@@ -142,5 +142,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
             else
                 tablo.FocusedRowHandle = rowhandle - 1;
         }
+
+        public static void SagMenuGoster(this MouseEventArgs e, PopupMenu sagMenu)
+        {
+            if (e.Button != MouseButtons.Right) return;
+            sagMenu.ShowPopup(Control.MousePosition);
+        }
     }
 }
