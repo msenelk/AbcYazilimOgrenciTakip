@@ -66,6 +66,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
             btnSil.Enabled = !butonEnabledDurumu;
         }
 
+   
         public static long IdOlustur(this IslemTuru islemTuru, BaseEntity selectedEntity)
         {
             // aynı anda farklı ıd ler oluşturmak için..
@@ -102,7 +103,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
 
                 return yil + ay + gun + saat + dakika + saniye + milisaniye + random;
             }
-
+            var id = Id();
             return islemTuru == IslemTuru.EntitUpdate ? selectedEntity.Id:long.Parse(Id());
 
         }
@@ -130,6 +131,16 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
                     rowHandle = i;
             }
             tablo.FocusedRowHandle = rowHandle;
+        }
+
+        public static void RowFocus(this GridView tablo, int rowhandle)
+        {
+            if (rowhandle <= 0) return;
+
+            if(rowhandle == tablo.RowCount - 1)
+                tablo.FocusedRowHandle = rowhandle;
+            else
+                tablo.FocusedRowHandle = rowhandle - 1;
         }
     }
 }

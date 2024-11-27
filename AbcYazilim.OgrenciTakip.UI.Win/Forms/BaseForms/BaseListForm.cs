@@ -90,9 +90,14 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             Tablo.RowFocus("Id", id);
         }
 
-        private void EntityDelete()
+        protected virtual void EntityDelete()
         {
-            throw new NotImplementedException();
+            var entity = Tablo.GetRow<BaseEntity>();
+            if (entity != null) return;
+            if (!((IBaseCommonBll)Bll).Delete(entity)) return;
+
+            Tablo.DeleteSelectedRows();
+            Tablo.RowFocus(Tablo.FocusedRowHandle);
         }
 
         private void SelecEntity()

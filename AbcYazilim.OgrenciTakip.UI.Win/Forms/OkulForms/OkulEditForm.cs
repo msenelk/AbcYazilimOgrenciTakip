@@ -34,10 +34,12 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.OkulForms
         protected override void NesneyiKontrollerBagla()
         {
             var entity = (OkulS)OldEntity;
+
             txtKod.Text=entity.Kod;
             txtOkulAdi.Text=entity.OkulAdi;
             txtIl.Id = entity.IlId;
             txtIl.Text = entity.IlAdi;
+            txtIlce.Id = entity.IlceId;
             txtIlce.Text = entity.IlceAdi;
             txtAciklama.Text = entity.Aciklama;
             durum.IsOn = entity.Durum;

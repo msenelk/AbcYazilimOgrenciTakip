@@ -149,7 +149,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 
         private void EntityDelete()
         {
-            throw new NotImplementedException();
+            if (!((IBaseCommonBll)Bll).Delete(OldEntity)) return;
+            RefreshYapilacak = true;
+            Close();
         }
 
         private void GeriAl()

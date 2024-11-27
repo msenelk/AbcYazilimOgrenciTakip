@@ -13,7 +13,7 @@ using AbcYazilim.OgrenciTakip.Bll.Interfaces;
 
 namespace AbcYazilim.OgrenciTakip.Bll.General
 {
-    public class OkulBll : BaseBll<Okul, OgrenciTakipContext>,IBaseGenelBll
+    public class OkulBll : BaseBll<Okul, OgrenciTakipContext>,IBaseGenelBll,IBaseCommonBll
     {
         public OkulBll() { }
 
