@@ -8,6 +8,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Windows.Forms;
+using DevExpress.XtraPrinting.Native;
+using DevExpress.Utils.Extensions;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
@@ -23,6 +25,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         protected IBaseBll Bll;
         protected ControlNavigator Navigator;
         protected internal long? SeciliGelecekId;
+        protected BarItem[] ShowItems;
+        protected BarItem[] HideItems;
         public BaseListForm()
         {
             InitializeComponent();
@@ -69,7 +73,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             barEnterAciklama.Visibility = IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
             btnAktifPasifKartlar.Visibility = AktifPasifButonGoster ? BarItemVisibility.Always : !IsMdiChild ? BarItemVisibility.Never : BarItemVisibility.Always;
 
-            // Güncellenecek.
+            ShowItems?.ForEach(x=>x.Visibility= BarItemVisibility.Always);
+            HideItems?.ForEach(x => x.Visibility = BarItemVisibility.Never);
         }
 
         protected internal void Yukle()
@@ -170,67 +175,89 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         {
             Cursor.Current = Cursors.WaitCursor;
 
-            if(e.Item==btnGonder)
+            if (e.Item == btnGonder)
             {
                 var link = (BarSubItemLink)e.Item.Links[0];
                 link.Focus();
                 link.OpenMenu();
                 link.Item.ItemLinks[0].Focus();
             }
-            else if(e.Item==btnStanadartExcelDosyasi)
+            else if (e.Item == btnStanadartExcelDosyasi)
             {
 
-            }else if (e.Item == btnFormatliExcelDosyasi)
+            }
+            else if (e.Item == btnFormatliExcelDosyasi)
             {
 
-            }else if(e.Item == btnFormatsizExcelDosyasi)
+            }
+            else if (e.Item == btnFormatsizExcelDosyasi)
             {
 
-            }else if(e.Item == btnWordDosyasi)
+            }
+            else if (e.Item == btnWordDosyasi)
             {
 
-            }else if(e.Item == btnTxtDosyasi)
+            }
+            else if (e.Item == btnTxtDosyasi)
             {
 
-            }else if(e.Item == btnYeni)
+            }
+            else if (e.Item == btnYeni)
             {
                 // Yetki Kontrolü
-               ShowEditForm(-1);
-            }else if(e.Item == btnDuzelt)
+                ShowEditForm(-1);
+            }
+            else if (e.Item == btnDuzelt)
             {
                 ShowEditForm(Tablo.GetRowId());
-            }else if(e.Item == btnSil)
+            }
+            else if (e.Item == btnSil)
             {
                 // Yetki Kontrolü
                 EntityDelete();
-            }else if(e.Item == btnSec)
+            }
+            else if (e.Item == btnSec)
             {
                 SelecEntity();
-            }else if(e.Item == btnYenile)
+            }
+            else if (e.Item == btnYenile)
             {
                 Listele();
-            }else if(e.Item == btnFiltrele)
+            }
+            else if (e.Item == btnFiltrele)
             {
                 FiltreSec();
-            }else if(e.Item == btnKolonlar)
+            }
+            else if (e.Item == btnKolonlar)
             {
                 if (Tablo.CustomizationForm == null)
                     Tablo.ShowCustomization();
                 else
                     Tablo.HideCustomization();
-            }else if(e.Item == btnYazdir)
+            }
+            else if (e.Item == btnBagliKartlar)
+                BagliKartlarAc();
+            else if (e.Item == btnYazdir)
             {
                 Yazdir();
-            }else if(e.Item == btnCikis)
+            }
+            else if (e.Item == btnCikis)
             {
                 Close();
-            }else if(e.Item == btnAktifPasifKartlar)
+            }
+            else if (e.Item == btnAktifPasifKartlar)
             {
                 AktifKartlariGoster = !AktifKartlariGoster;
                 FormCaptionAyarla();
             }
 
             Cursor.Current = DefaultCursor;
+        }
+
+        protected virtual void BagliKartlarAc(){
+            {
+
+            }
         }
 
         private void Tablo_DoubleClick(object sender, EventArgs e)
