@@ -83,20 +83,20 @@ namespace AbcYazilim.Dal.Base
                 string kod = null;
                 var kodDizi = kartTuru.ToName().Split(' ');
 
-                for (int i = 0; i<kodDizi.Length -1; i++) // Okul kartı
+                for (int i = 0; i < kodDizi.Length -1; i++) // Okul kartı
                 {
                     kod += kodDizi[i];
 
-                    if(i + 1 <kodDizi.Length-1)
-                    {
+                    if(i + 1 < kodDizi.Length - 1)
                         kod += " ";
-                    }
                 }
+
                 return kod += "-0001";
             }
             string YeniKodVer(string kod)
             {
                 var sayisalDegerler = "";
+
                 foreach (var karakter in kod)
                 {
                     if (char.IsDigit(karakter))
@@ -116,7 +116,7 @@ namespace AbcYazilim.Dal.Base
                 return yeniDeger;
             }
 
-            var maxKod=where==null?_dbSet.Max(filter):_dbSet.Where(where).Max(filter);
+            var maxKod = where == null ? _dbSet.Max(filter) : _dbSet.Where(where).Max(filter);
             return maxKod == null ? Kod() : YeniKodVer(maxKod);
 
         }

@@ -115,14 +115,13 @@
             this.colId.Name = "colId";
             this.colId.OptionsColumn.AllowEdit = false;
             this.colId.OptionsColumn.ShowInCustomizationForm = false;
+            this.colId.OptionsFilter.AllowAutoFilter = false;
             this.colId.StatusBarAciklama = null;
             this.colId.StatusBarKisaYol = null;
             this.colId.StatusBarKisaYolAciklama = null;
             // 
             // colKod
             // 
-            this.colKod.AppearanceCell.Options.UseTextOptions = true;
-            this.colKod.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colKod.Caption = "Kod";
             this.colKod.FieldName = "Kod";
             this.colKod.Name = "colKod";
@@ -130,7 +129,8 @@
             this.colKod.StatusBarAciklama = null;
             this.colKod.StatusBarKisaYol = null;
             this.colKod.StatusBarKisaYolAciklama = null;
-            this.colKod.Width = 130;
+            this.colKod.Visible = true;
+            this.colKod.VisibleIndex = 0;
             // 
             // colOkulAdi
             // 
@@ -141,7 +141,9 @@
             this.colOkulAdi.StatusBarAciklama = null;
             this.colOkulAdi.StatusBarKisaYol = null;
             this.colOkulAdi.StatusBarKisaYolAciklama = null;
-            this.colOkulAdi.Width = 260;
+            this.colOkulAdi.Visible = true;
+            this.colOkulAdi.VisibleIndex = 1;
+            this.colOkulAdi.Width = 402;
             // 
             // colIlAdi
             // 
@@ -152,7 +154,8 @@
             this.colIlAdi.StatusBarAciklama = null;
             this.colIlAdi.StatusBarKisaYol = null;
             this.colIlAdi.StatusBarKisaYolAciklama = null;
-            this.colIlAdi.Width = 130;
+            this.colIlAdi.Visible = true;
+            this.colIlAdi.VisibleIndex = 2;
             // 
             // colIlceAdi
             // 
@@ -163,17 +166,21 @@
             this.colIlceAdi.StatusBarAciklama = null;
             this.colIlceAdi.StatusBarKisaYol = null;
             this.colIlceAdi.StatusBarKisaYolAciklama = null;
+            this.colIlceAdi.Visible = true;
+            this.colIlceAdi.VisibleIndex = 3;
             this.colIlceAdi.Width = 130;
             // 
             // colAciklama
             // 
             this.colAciklama.Caption = "Açıklama";
-            this.colAciklama.FieldName = "ColAciklama";
+            this.colAciklama.FieldName = "Aciklama";
             this.colAciklama.Name = "colAciklama";
             this.colAciklama.OptionsColumn.AllowEdit = false;
             this.colAciklama.StatusBarAciklama = null;
             this.colAciklama.StatusBarKisaYol = null;
             this.colAciklama.StatusBarKisaYolAciklama = null;
+            this.colAciklama.Visible = true;
+            this.colAciklama.VisibleIndex = 4;
             this.colAciklama.Width = 450;
             // 
             // longNavigator
@@ -206,14 +213,14 @@
         }
 
         #endregion
-        private UserControls.Grid.MyGridColumn colId;
-        private UserControls.Grid.MyGridColumn colKod;
         private UserControls.Navigators.LongNavigator longNavigator;
-        private UserControls.Grid.MyGridColumn colOkulAdi;
-        private UserControls.Grid.MyGridColumn colIlAdi;
         private UserControls.Grid.MyGridColumn colIlceAdi;
         private UserControls.Grid.MyGridColumn colAciklama;
         private UserControls.Grid.MyGridControl grid;
         public UserControls.Grid.MyGridView tablo;
+        private UserControls.Grid.MyGridColumn colKod;
+        private UserControls.Grid.MyGridColumn colOkulAdi;
+        private UserControls.Grid.MyGridColumn colId;
+        private UserControls.Grid.MyGridColumn colIlAdi;
     }
 }
