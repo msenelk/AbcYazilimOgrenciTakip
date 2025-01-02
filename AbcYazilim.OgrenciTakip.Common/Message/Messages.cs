@@ -46,5 +46,16 @@ namespace AbcYazilim.OgrenciTakip.Common.Message
         {
             UyariMesaji("Lütfen Bir Kart Seçiniz.");
         }
+
+        public static void MukerrerKayitHataMesaji(string alanAdi)
+        {
+            HataMesaji($"Girmiş Olduğunuz {alanAdi} Daha Önce Kullanılmıştır.");
+        }
+
+        public static void HataliVeriMesai (string alanAdi)
+        {
+            HataMesaji($"{alanAdi} Alanına Geçerli Bir Değer Girmelisiniz.");
+        }
+
     }
 }

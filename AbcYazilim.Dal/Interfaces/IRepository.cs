@@ -21,6 +21,7 @@ namespace AbcYazilim.Dal.Interfaces
         // Geriye döndürülecek tipi bilmediğimiz için TResult yaptık
         IQueryable<TResult> Select<TResult>(Expression<Func<T, bool>> filter, Expression<Func<T, TResult>> selector);
         // T türünü içeren filtre göndereceğiz bu filtre ile sorgulama yap sorgu sonucu true ise bunları bana geriye gönder. Sorgu gönderir değer değil. Listeleme ayrı olacak
+        int Count(Expression<Func<T, bool>> filter=null);
         string YeniKodVer(KartTuru kartTuru, Expression<Func<T, string>> filter, Expression<Func<T, bool>> where = null);
     }
 }

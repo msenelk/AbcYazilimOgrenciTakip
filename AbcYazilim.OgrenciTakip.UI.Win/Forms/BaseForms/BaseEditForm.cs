@@ -9,6 +9,8 @@ using AbcYazilim.OgrenciTakip.UI.Win.Functions;
 using AbcYazilim.OgrenciTakip.Common.Message;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid;
+using AbcYazilim.OgrenciTakip.UI.Win.Interfaces;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
@@ -46,6 +48,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             void ControlEvents(Control control)
             {
                 control.KeyDown += Control_KeyDown;
+                control.GotFocus += Control_GotFocus;
+                control.Leave += Control_Leave;
+
                 switch (control)
                 {
                     case MyButtonEdit edt:
@@ -69,6 +74,31 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                 foreach (var layout in DataLayoutControls)
                     foreach (Control ctrl in layout.Controls)
                         ControlEvents(ctrl);
+        }
+
+        private void Control_Leave(object sender, EventArgs e)
+        {
+            statusBarKisaYol.Visibility = BarItemVisibility.Never;
+            statusBarKisaYolAciklama.Visibility = BarItemVisibility.Never;
+        }
+
+        private void Control_GotFocus(object sender, EventArgs e)
+        {
+            var type=sender.GetType();
+
+            if (type == typeof(MyButtonEdit) || type == typeof(MyGridView) || type == typeof(MyPictureEdit) || type == typeof(MyComboBoxEdit) || type == typeof(MyDateEdit))
+            {
+                statusBarKisaYol.Visibility = BarItemVisibility.Always;
+                statusBarKisaYolAciklama.Visibility = BarItemVisibility.Always;
+
+                statusBarAciklama.Caption = ((IStatusBarAciklama)sender).StatusBarAciklama;
+                statusBarKisaYol.Caption = ((IStatusBarKisaYol)sender).StatusBarKisaYol;
+                statusBarKisaYolAciklama.Caption = ((IStatusBarKisaYol)sender).StatusBarKisaYolAciklama;
+            }
+            else if(sender is IStatusBarAciklama ctrl)
+            {
+                statusBarAciklama.Caption = ctrl.StatusBarAciklama;
+            }
         }
 
         private void BaseEditForm_SizeChanged(object sender, EventArgs e)
