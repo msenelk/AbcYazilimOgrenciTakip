@@ -1,8 +1,11 @@
-﻿using AbcYazilim.OgrenciTakip.Common.Message;
+﻿using AbcYazilim.OgrenciTakip.Common.Enums;
+using AbcYazilim.OgrenciTakip.Common.Message;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.Xml;
@@ -130,6 +133,88 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Functions
 
 				Messages.HataMesaji(ex.Message);
 			}
+		}
+
+		public static void TabloDisariAktar(this GridView tablo, DosyaTuru dosyaTuru, string dosyaFormati, string excelSayfaAdi=null)
+		{
+			if (Messages.TabloExportMesaji(dosyaFormati) != DialogResult.Yes) return;
+
+
+            if (!Directory.Exists(Application.StartupPath + "\\Temp"))
+                Directory.CreateDirectory(Application.StartupPath + @"\Temp");
+
+			var dosyaAdi = Guid.NewGuid().ToString();
+			var filePath = $@"{Application.StartupPath}\Temp\{dosyaAdi}";
+
+			switch (dosyaTuru)
+			{
+				case DosyaTuru.ExcelStandart:
+					{
+						var opt = new XlsxExportOptionsEx
+						{
+							ExportType = DevExpress.Export.ExportType.Default,
+							SheetName=excelSayfaAdi,
+							TextExportMode=TextExportMode.Text
+						};
+						filePath = filePath + ".xlsx";
+						tablo.ExportToXlsx(filePath, opt);
+					}
+					break;
+				case DosyaTuru.ExcelFormatli:
+					{
+                        var opt = new XlsxExportOptionsEx
+                        {
+                            // WYSIWYG excel için formatlı çıkış sağlar
+                            ExportType = DevExpress.Export.ExportType.WYSIWYG,
+                            SheetName = excelSayfaAdi,
+                            TextExportMode = TextExportMode.Text
+                        };
+                        filePath = filePath + ".xlsx";
+                        tablo.ExportToXlsx(filePath, opt);
+                    }
+					break;
+				case DosyaTuru.ExcelFormatsiz:
+					{
+                        var opt = new CsvExportOptionsEx
+                        {
+                            ExportType = DevExpress.Export.ExportType.WYSIWYG,
+                            TextExportMode = TextExportMode.Text
+                        };
+                        filePath = filePath + ".csv";
+                        tablo.ExportToCsv(filePath, opt);
+                    }
+					break;
+				case DosyaTuru.WordDosyasi:
+					{
+                        filePath = filePath + ".rtf";
+                        tablo.ExportToRtf(filePath);
+                    }
+					break;
+				case DosyaTuru.PdfDosyasi:
+					{
+                        filePath = filePath + ".pdf";
+                        tablo.ExportToPdf(filePath);
+                    }
+					break;
+				case DosyaTuru.TxtDosyasi:
+					{
+                        var opt = new TextExportOptions
+                        {
+                            TextExportMode = TextExportMode.Text
+                        };
+                        filePath = filePath + ".txt";
+                        tablo.ExportToText(filePath, opt);
+                    }
+					break;
+			}
+
+			if (!File.Exists(filePath))
+			{
+				Messages.HataMesaji("Tablo Verileri Dosyaya Aktarılamadı.");
+				return;
+			}
+
+			Process.Start(filePath);
 		}
     }
 }

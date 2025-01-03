@@ -57,5 +57,10 @@ namespace AbcYazilim.OgrenciTakip.Common.Message
             HataMesaji($"{alanAdi} Alanına Geçerli Bir Değer Girmelisiniz.");
         }
 
+        public static DialogResult TabloExportMesaji(string dosyaFormati)
+        {
+            return EvetSeciliEvetHayir($"İlgili Tablo, {dosyaFormati} Olarak Dışarı Aktarılacaktır. Onaylıyor musunuz?", "Aktarım Onay");
+        }
+
     }
 }
