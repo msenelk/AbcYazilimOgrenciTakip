@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using AbcYazilim.OgrenciTakip.UI.Win.UserControls.Grid;
 using AbcYazilim.OgrenciTakip.UI.Win.Interfaces;
+using DevExpress.Utils.Extensions;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
@@ -28,6 +29,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         protected BaseEntity CurrentEntity;
         protected bool IsLoaded;
         protected bool KayitSonrasiFormuKapat = true;
+        protected BarItem[] ShowItems;
+        protected BarItem[] HideItems;
         public BaseEditForm()
         {
             InitializeComponent();
@@ -121,6 +124,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                 e.Cancel = true;
         }
 
+        protected virtual void FiltreUygula() { }
+
         protected void SablonKaydet()
         {
             if (_formSablonKayitEdilecek)
@@ -179,8 +184,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             IsLoaded = true;
             GuncelNesneOlustur();
             SablonYukle();
-            // ButonGizleGoster();
-            Id=BaseIslemTuru.IdOlustur(OldEntity);
+            ButonGizleGoster();
 
             // Güncelleme Yapılacak
             
@@ -205,7 +209,12 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             {
                 // Yetki kontrolü
                 EntityDelete();
-            }else if(e.Item == btnCikis)
+            }
+            else if(e.Item==btnUygula)
+            {
+                FiltreUygula();
+            }
+            else if(e.Item == btnCikis)
             {
                 Close();
             }
@@ -219,6 +228,12 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             if (!((IBaseCommonBll)Bll).Delete(OldEntity)) return;
             RefreshYapilacak = true;
             Close();
+        }
+
+        private void ButonGizleGoster()
+        {
+            ShowItems?.ForEach(x => x.Visibility = BarItemVisibility.Always);
+            HideItems?.ForEach(x => x.Visibility = BarItemVisibility.Never);
         }
 
         private void GeriAl()
