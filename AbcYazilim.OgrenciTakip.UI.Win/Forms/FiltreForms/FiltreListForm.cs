@@ -38,7 +38,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.FiltreForms
 
         protected override void ShowEditForm(long id)
         {
-            var result = new ShowEditForms<FiltreEditForm>().ShowDialogEditForm(KartTuru.Filtre, id, _filtreKartTuru, _filtreKartTuru);
+            var result = ShowEditForms<FiltreEditForm>.ShowDialogEditForm(KartTuru.Filtre, id, _filtreKartTuru, _filtreKartTuru);
             ShowEditFormDefault(result);
         }
     }

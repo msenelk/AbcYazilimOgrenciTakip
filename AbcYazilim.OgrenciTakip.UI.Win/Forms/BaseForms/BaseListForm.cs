@@ -10,11 +10,15 @@ using System;
 using System.Windows.Forms;
 using DevExpress.XtraPrinting.Native;
 using DevExpress.Utils.Extensions;
+using AbcYazilim.OgrenciTakip.UI.Win.Forms.FiltreForms;
+using AbcYazilim.OgrenciTakip.UI.Win.Show;
+using AbcYazilim.OgrenciTakip.Model.Entities;
 
 namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 {
     public partial class BaseListForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        private long _filtreId;
         private bool _formSablonKayitEdilecek;
         private bool _tabloSablonKayitEdilecek;
         protected IBaseFormShow FormShow;
@@ -46,6 +50,8 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             Tablo.ColumnWidthChanged += Tablo_ColumnWidthChanged;
             Tablo.ColumnPositionChanged += Tablo_ColumnPositionChanged;
             Tablo.EndSorting += Tablo_EndSorting;
+            Tablo.FilterEditorCreated += Tablo_FilterEditorCreated;
+            Tablo.ColumnFilterChanged += Tablo_ColumnFilterChanged;
 
             // Form Events
             Shown += BaseListForm_Shown;
@@ -53,6 +59,18 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             FormClosing += BaseListForm_FormClosing;
             LocationChanged += BaseListForm_LocationChanged;
             SizeChanged += BaseListForm_SizeChanged;
+        }
+
+        private void Tablo_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Tablo.ActiveFilterString))
+                _filtreId = 0;
+        }
+
+        private void Tablo_FilterEditorCreated(object sender, DevExpress.XtraGrid.Views.Base.FilterControlEventArgs e)
+        {
+            e.ShowFilterEditor = false;
+            ShowEditForms<FiltreEditForm>.ShowDialogEditForm(KartTuru.Filtre, _filtreId, BaseKartTuru, Tablo.GridControl);
         }
 
         private void BaseListForm_SizeChanged(object sender, EventArgs e)
@@ -195,7 +213,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
         protected virtual void Listele() {  }
         private void FiltreSec()
         {
-            throw new NotImplementedException();
+            var entity = (Filtre)ShowListForms<FiltreListForm>.ShowDialogListForm(KartTuru.Filtre,_filtreId,BaseKartTuru,Tablo.GridControl);
+            if (entity == null) return;
+
+            _filtreId = entity.Id;
+            Tablo.ActiveFilterString = entity.FiltreMetni;
         }
         private void Yazdir()
         {

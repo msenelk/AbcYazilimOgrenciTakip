@@ -32,30 +32,36 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.FiltreForms
         protected internal override void Yukle()
         {
             txtFiltreMetni.SourceControl = _filtreGrid;
-            if(BaseIslemTuru==IslemTuru.EntityInsert)
-            {
-                OldEntity=new Filtre();
-                Id = Id = BaseIslemTuru.IdOlustur(OldEntity);
-                txtKod.Text = ((FiltreBll)Bll).YeniKodVer(x => x.KartTuru==_filtreKartTuru);
-            }
-            else
-            {
-                OldEntity = ((FiltreBll)Bll).Single(FilterFunctions.Filter<Filtre>(Id));
-                if(OldEntity==null)
-                {
-                    BaseIslemTuru = IslemTuru.EntityInsert;
 
+            while (true)
+            {
+                if (BaseIslemTuru == IslemTuru.EntityInsert)
+                {
+                    OldEntity = new Filtre();
+                    Id = Id = BaseIslemTuru.IdOlustur(OldEntity);
+                    txtKod.Text = ((FiltreBll)Bll).YeniKodVer(x => x.KartTuru == _filtreKartTuru);
+                }
+                else
+                {
+                    OldEntity = ((FiltreBll)Bll).Single(FilterFunctions.Filter<Filtre>(Id));
+                    if (OldEntity == null)
+                    {
+                        BaseIslemTuru = IslemTuru.EntityInsert;
+                        continue;
+                    }
                     NesneyiKontrollerBagla();
                 }
+                break;
             }
         }
 
         protected override void NesneyiKontrollerBagla()
         {
             var entity = (Filtre)OldEntity;
+
             txtKod.Text = entity.Kod;
             txtFiltreAdi.Text = entity.FiltreAdi;
-            txtFiltreMetni.Text = entity.FiltreMetni;
+            txtFiltreMetni.FilterString = entity.FiltreMetni;
         }
 
         protected override void GuncelNesneOlustur()

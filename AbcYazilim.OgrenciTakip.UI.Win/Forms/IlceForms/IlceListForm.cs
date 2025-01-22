@@ -38,7 +38,7 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.IlceForms
 
         protected override void ShowEditForm(long id)
         {
-            var result = new ShowEditForms<IlceEditForm>().ShowDialogEditForm(KartTuru.Ilce, id, _ilId, _ilId);
+            var result = ShowEditForms<IlceEditForm>.ShowDialogEditForm(KartTuru.Ilce, id, _ilId, _ilId);
             ShowEditFormDefault(result);
         }
 

@@ -56,6 +56,9 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
 
                 switch (control)
                 {
+                    case FilterControl edt:
+                        edt.FilterChanged += Control_EditValueChanged;
+                        break;
                     case MyButtonEdit edt:
                         edt.IdChanged += Control_IdChanged;
                         edt.EnabledChange += Control_EnabledChange;
@@ -77,6 +80,11 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                 foreach (var layout in DataLayoutControls)
                     foreach (Control ctrl in layout.Controls)
                         ControlEvents(ctrl);
+        }
+
+        private void Edt_FilterChanged(object sender, FilterChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Control_Leave(object sender, EventArgs e)
@@ -202,7 +210,13 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
             else if(e.Item == btnKaydet)
             {
                 Kaydet(false);
-            }else if(e.Item == btnGerial)
+            }else if(e.Item==btnFarkliKaydet)
+            {
+                // Yetki kontrolü
+                FarkliKaydet();
+            }
+            
+            else if(e.Item == btnGerial)
             {
                 GeriAl();
             }else if(e.Item == btnSil)
@@ -219,6 +233,16 @@ namespace AbcYazilim.OgrenciTakip.UI.Win.Forms.BaseForms
                 Close();
             }
             Cursor.Current = DefaultCursor;
+        }
+
+        private void FarkliKaydet()
+        {
+            if (Messages.EvetSeciliEvetHayir("Bul Filtre Refarans Alınarak Yeni Bir Filtre Oluşturulacaktır. Onaylıyor musunuz?", "Kayıt Onay") != DialogResult.Yes) return;
+
+            BaseIslemTuru = IslemTuru.EntityInsert;
+            Yukle();
+            if (Kaydet(true))
+                Close();
         }
 
         protected virtual void SecimYap(object sender) { }
